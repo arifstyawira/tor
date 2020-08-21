@@ -48,6 +48,7 @@ apt-get install tor -y
 
 echo "$(tput setaf 6)Installing Ip Address...$(tput sgr0)"
 mv /etc/network/interfaces /etc/network/interfaces.bak
+echo "
 auto lo
 iface lo inet loopback
 auto eth0
@@ -84,7 +85,10 @@ iptables -t nat -A PREROUTING -i eth1 -p tcp --syn -j REDIRECT --to-ports 9040
 echo "$(tput setaf 6)Saving IP tables...$(tput sgr0)"
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 sudo iptables-save | sudo tee /etc/iptables.conf
-iptables-restore < /etc/iptables.conf" >> /etc/rc.local
+mv /etc/rc.local  /etc/rc.local.bak
+echo "
+iptables-restore < /etc/iptables.conf
+exit 0" >> /etc/rc.local
 
 echo "$(tput setaf 6)Setting up logging in /var/log/tor/notices.log...$(tput sgr0)"
 touch /var/log/tor/notices.log
