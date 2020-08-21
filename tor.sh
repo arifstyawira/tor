@@ -53,9 +53,9 @@ VirtualAddrNetwork 10.192.0.0/10
 AutomapHostsSuffixes .onion,.exit
 AutomapHostsOnResolve 1
 TransPort 9040
-TransListenAddress 192.168.42.1
+TransListenAddress 192.168.1.1
 DNSPort 53
-DNSListenAddress 192.168.42.1" >> /etc/tor/torrc
+DNSListenAddress 192.168.1.1" >> /etc/tor/torrc
 
 echo "$(tput setaf 6)Flushing old IP tables...$(tput sgr0)"
 iptables -F
@@ -72,6 +72,7 @@ iptables -t nat -A PREROUTING -i eth1 -p tcp --syn -j REDIRECT --to-ports 9040
 
 echo "$(tput setaf 6)Saving IP tables...$(tput sgr0)"
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
+sudo iptables-save | sudo tee /etc/iptables.conf
 
 echo "$(tput setaf 6)Setting up logging in /var/log/tor/notices.log...$(tput sgr0)"
 touch /var/log/tor/notices.log
