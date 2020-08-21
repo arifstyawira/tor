@@ -101,7 +101,9 @@ echo "#!/bin/sh -e
 # bits.
 #
 # By default this script does nothing.
+
 iptables-restore < /etc/iptables.conf
+
 exit 0" >> /etc/rc.local
 
 echo "$(tput setaf 6)Setting up logging in /var/log/tor/notices.log...$(tput sgr0)"
