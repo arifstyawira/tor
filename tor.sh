@@ -44,6 +44,9 @@ echo "$(tput setaf 6)This script will auto-setup an Onion Pi Tor proxy for you.$
 read -p "$(tput bold ; tput setaf 2)Press [Enter] to begin, [Ctrl-C] to abort...$(tput sgr0)"
 
 echo "$(tput setaf 6)Installing Tor...$(tput sgr0)"
+apt-get install iptables-persistent -y
+
+
 apt-get install tor -y
 
 echo "$(tput setaf 6)Installing Ip Address...$(tput sgr0)"
