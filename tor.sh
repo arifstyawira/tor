@@ -74,6 +74,8 @@ echo "$(tput setaf 6)Saving IP tables...$(tput sgr0)"
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 sudo iptables-save | sudo tee /etc/iptables.conf
 
+iptables-restore < /etc/iptables.conf >> /etc/rc.local
+
 echo "$(tput setaf 6)Setting up logging in /var/log/tor/notices.log...$(tput sgr0)"
 touch /var/log/tor/notices.log
 chown debian-tor /var/log/tor/notices.log
