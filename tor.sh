@@ -46,6 +46,17 @@ read -p "$(tput bold ; tput setaf 2)Press [Enter] to begin, [Ctrl-C] to abort...
 echo "$(tput setaf 6)Installing Tor...$(tput sgr0)"
 apt-get install tor -y
 
+echo "$(tput setaf 6)Installing Ip Address...$(tput sgr0)"
+mv /etc/network/interfaces /etc/network/interfaces.bak
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet dhcp
+auto eth1
+iface eth1 inet static
+address 192.168.1.1
+netmask 255.255.255.0" >> /etc/network/interfaces
+
 echo "$(tput setaf 6)Configuring Tor...$(tput sgr0)"
 cp /etc/tor/torrc /etc/tor/torrc.bak
 echo "Log notice file /var/log/tor/notices.log
@@ -73,8 +84,7 @@ iptables -t nat -A PREROUTING -i eth1 -p tcp --syn -j REDIRECT --to-ports 9040
 echo "$(tput setaf 6)Saving IP tables...$(tput sgr0)"
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 sudo iptables-save | sudo tee /etc/iptables.conf
-
-iptables-restore < /etc/iptables.conf >> /etc/rc.local
+iptables-restore < /etc/iptables.conf" >> /etc/rc.local
 
 echo "$(tput setaf 6)Setting up logging in /var/log/tor/notices.log...$(tput sgr0)"
 touch /var/log/tor/notices.log
