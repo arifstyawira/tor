@@ -86,8 +86,7 @@ echo "$(tput setaf 6)Saving IP tables...$(tput sgr0)"
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 sudo iptables-save | sudo tee /etc/iptables.conf
 mv /etc/rc.local  /etc/rc.local.bak
-echo "
-#!/bin/sh -e
+echo "#!/bin/sh -e
 #
 # rc.local
 #
