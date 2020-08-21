@@ -59,7 +59,7 @@ address 192.168.1.1
 netmask 255.255.255.0" >> /etc/network/interfaces
 
 echo "$(tput setaf 6)Configuring Tor...$(tput sgr0)"
-cp /etc/tor/torrc /etc/tor/torrc.bak
+mv /etc/tor/torrc /etc/tor/torrc.bak
 echo "Log notice file /var/log/tor/notices.log
 VirtualAddrNetwork 10.192.0.0/10
 AutomapHostsSuffixes .onion,.exit
