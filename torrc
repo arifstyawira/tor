@@ -1,0 +1,3 @@
+ExcludeNodes {au},{ca},{nz},{gb},{uk},{dk},{fr},{an},{nl},{no},{de},{be},{it},{se},{es}
+ExcludeExitNodes {au},{ca},{nz},{gb},{uk},{dk},{fr},{an},{nl},{no},{de},{be},{it},{se},{es}
+MaxCircuitDirtiness 5
