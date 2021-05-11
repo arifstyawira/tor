@@ -1,3 +1,5 @@
 ExcludeNodes {au},{ca},{nz},{gb},{uk},{dk},{fr},{an},{nl},{no},{de},{be},{it},{se},{es},{us}
 ExcludeExitNodes {au},{ca},{nz},{gb},{uk},{dk},{fr},{an},{nl},{no},{de},{be},{it},{se},{es},{us}
 MaxCircuitDirtiness 5
+
+HTTPSProxy 45.130.229.230:443
